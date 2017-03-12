@@ -28,11 +28,10 @@ class Grabber(val title: String = "Grabber") {
             image = function.invoke(frame)
             canvasFrame.showImage(converter.convert(image))
         }
-
-        image.let(::cvReleaseImage)
-        memoryStorage.let(::cvReleaseMemStorage)
         grabber.stop()
         canvasFrame.dispose()
+        image.let(::cvReleaseImage)
+        memoryStorage.let(::cvReleaseMemStorage)
     }
 
 }
