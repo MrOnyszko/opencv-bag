@@ -13,10 +13,10 @@ fun main(args: Array<String>) {
     val threshold: Double = 40.0
     val apertureSize: Int = 3
 
-    grabber.grabIt({
-        val image: IplImage = IplImage.create(it.width(), it.height(), IPL_DEPTH_8U, 1)
-        cvCvtColor(it, image, CV_BGR2GRAY)
-        cvCanny(image, image, threshold, (threshold * 3), apertureSize)
-        image
-    }, 1)
+    grabber.grabIt(function = {
+        val image: IplImage = IplImage.create(it.width(), it.height(), IPL_DEPTH_8U, 1) // create new image for gray scale converting
+        cvCvtColor(it, image, CV_BGR2GRAY) // convert image to gray scale
+        cvCanny(image, image, threshold, (threshold * 3), apertureSize) // apply canny
+        image // return image for display
+    }, deviceNumber = 1)
 }
