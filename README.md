@@ -8,17 +8,37 @@ Project that contains OpenCV (JavaCV) samples written in Kotlin.
 
 ![Canny](https://github.com/MrOnyszko/opencv-bag/blob/master/art/canny.jpeg)
 
+Using IplImageGrabber class:
+
 ```kotlin
 
-    val grabber = Grabber()
+    val grabber = IplImageGrabber()
 
-    val threshold: Double = 40.0
+    val threshold: Double = 20.0
     val apertureSize: Int = 3
 
-    grabber.grab(deviceNumber = 1) {
+    grabber.grab {
         val image: IplImage = IplImage.create(it.width(), it.height(), IPL_DEPTH_8U, 1) // create new image for gray scale converting
         cvCvtColor(it, image, CV_BGR2GRAY) // convert image to gray scale
         cvCanny(image, image, threshold, (threshold * 3), apertureSize) // apply canny
+        image // pass image for display
+    }
+
+```
+
+Using MatGrabber class:
+
+```kotlin
+
+    val grabber = MatGrabber()
+
+    val threshold: Double = 20.0
+    val apertureSize: Int = 3
+
+    grabber.grab {
+        val image = Mat(it.size().width(), it.size().height(), IPL_DEPTH_8U, 1) // create new image for gray scale converting
+        cvtColor(it, image, CV_BGR2GRAY) // convert image to gray scale
+        Canny(image, image, threshold, (threshold * 2), apertureSize, true) // apply canny
         image // pass image for display
     }
 
