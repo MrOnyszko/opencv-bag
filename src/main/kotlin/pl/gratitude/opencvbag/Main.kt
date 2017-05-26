@@ -9,10 +9,10 @@ import pl.gratitude.opencvbag.grabber.MatGrabber
  * @author Sławomir Onyszko
  */
 fun main(args: Array<String>) {
-    matGrabber()
+    cannyWithMatGrabber()
 }
 
-fun iplImageGrabber() {
+fun cannyWithIplImageGrabber() {
     val grabber = IplImageGrabber()
 
     val threshold: Double = 20.0
@@ -26,7 +26,7 @@ fun iplImageGrabber() {
     }
 }
 
-fun matGrabber() {
+fun cannyWithMatGrabber() {
     val grabber = MatGrabber()
 
     val threshold: Double = 20.0
