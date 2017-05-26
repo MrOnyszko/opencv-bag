@@ -10,7 +10,7 @@ import org.bytedeco.javacv.OpenCVFrameGrabber
  */
 class IplImageGrabber(val title: String = "IplImageGrabber") {
 
-    fun <T : IplImage> grab(deviceNumber: Int, function: (T: IplImage) -> T) {
+    fun <T : IplImage> grab(deviceNumber: Int = 0, function: (T: IplImage) -> T) {
         val grabber = OpenCVFrameGrabber(deviceNumber)
         val converter = OpenCVFrameConverter.ToIplImage()
         grabber.start()

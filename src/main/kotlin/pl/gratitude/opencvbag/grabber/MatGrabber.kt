@@ -11,7 +11,7 @@ import org.bytedeco.javacv.OpenCVFrameGrabber
  */
 class MatGrabber(private val title: String = "Grabber") {
 
-    fun <T : Mat> grab(deviceNumber: Int, function: (T: Mat) -> T) {
+    fun <T : Mat> grab(deviceNumber: Int = 0, function: (T: Mat) -> T) {
         val grabber = OpenCVFrameGrabber(deviceNumber)
         val converter = OpenCVFrameConverter.ToMat()
         grabber.start()
